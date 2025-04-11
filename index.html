@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>185.199.109.154</title>
+    <style>
+        /* 全局防护样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-user-select: none;   /* 禁止选择 */
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none; /* 禁止长按菜单 */
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            background-color: #ffffff; /* 白色背景 */
+            overflow: hidden; /* 禁止滚动 */
+            touch-action: none; /* 禁止手势缩放 */
+            height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        /* 图片容器 - 置顶显示 */
+        .secure-image-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* 图片置顶 */
+            background-color: #ffffff;
+            z-index: 1;
+        }
+        
+        /* 防护遮罩层 */
+        .protection-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            opacity: 0.001; /* 几乎透明但仍能拦截事件 */
+        }
+        
+        /* 自适应图片样式 */
+        .secure-image {
+            max-width: 100%;
+            max-height: 100vh;
+            object-fit: contain;
+            pointer-events: none; /* 禁止图片交互 */
+        }
+        
+        /* 提示信息 */
+        .warning-message {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+            z-index: 20;
+            padding: 0 15px;
+        }
+        
+        /* 移动端特殊适配 */
+        @media (orientation: landscape) {
+            .secure-image {
+                max-width: 100vw;
+                max-height: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 图片容器 -->
+    <div class="secure-image-container">
+        <!-- 替换为您的图片路径 -->
+        <img class="secure-image" src="https://img.picui.cn/free/2025/04/11/67f8f41bd05eb.jpg" alt="受保护图片">
+        
+        <!-- 防护遮罩层 -->
+        <div class="protection-overlay"></div>
+    </div>
+    
+  
+
+    <script>
+        // 禁用右键菜单
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+        
+        // 防止拖拽
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
+        
+        // 防止触摸长按
+        document.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+        
+        // 防止键盘快捷键
+        document.addEventListener('keydown', function(e) {
+            // 禁用Ctrl+S、Ctrl+P、PrintScreen等
+            if (e.ctrlKey && (e.key === 's' || e.key === 'p') {
+                e.preventDefault();
+            }
+            if (e.key === 'PrintScreen') {
+                e.preventDefault();
+            }
+        });
+        
+        // 防止缩放
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+        
+        // 防止开发者工具
+        document.addEventListener('keydown', function(e) {
+            // 禁用F12、Ctrl+Shift+I、Ctrl+Shift+J等
+            if (e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
